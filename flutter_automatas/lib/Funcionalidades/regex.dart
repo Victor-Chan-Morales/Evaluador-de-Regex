@@ -19,8 +19,14 @@ class RegexTool {
   }
 
   static List<String> aplicarRegex(String pattern, String texto) {
-    final regex = RegExp(pattern);
-    return regex.allMatches(texto).map((m) => m.group(0)!).toList();
+    try {
+      final regex = RegExp(pattern);
+      final allMatches = regex.allMatches(texto);
+      final results = allMatches.map((m) => m.group(0)!).toList();
+      return results;
+    } catch (e) {
+      return [];
+    }
   }
 
   static bool _tieneParentesisDesbalanceados(String s) {
