@@ -14,10 +14,12 @@ class RegexApp extends StatelessWidget {
     return MaterialApp(
       title: 'Evaluador de Regex',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green,
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.blue,
+          seedColor: const Color(
+            0xFF00BF6D,
+          ), // Verde principal como en la imagen
           brightness: Brightness.light,
         ),
         fontFamily: 'Inter', // Fuente principal para texto normal

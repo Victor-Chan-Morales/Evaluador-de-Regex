@@ -1,0 +1,9 @@
+Conclusión:
+Las expresiones regulares son bastante útiles para permitir inputs o ingresos de información con cierto formato rígido, 
+esto para mantener un control restrictivo sobre la información que un sistema procesa. 
+Útil en automátas, ya que logra simplificar gran parte del trabajo como por ejemplo, validar si un correo electrónico es válido, 
+validar si un número de celular ingresado es correcto o si un nombre de usuario cumple con los reglamentos establecidos 
+(no mayor a x valor, que contenga valores alfanúmericos etc.)
+
+Link repositorio:
+https://github.com/Victor-Chan-Morales/Evaluador-de-Regex 

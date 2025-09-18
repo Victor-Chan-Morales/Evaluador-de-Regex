@@ -144,7 +144,7 @@ class _RegexAnalyzerScreenState extends State<RegexAnalyzerScreen> {
             context,
           ).textTheme.titleLarge?.copyWith(color: Colors.white, fontSize: 20),
         ),
-        backgroundColor: Colors.blue,
+        backgroundColor: const Color(0xFF00BF6D), // Verde como en la imagen
         foregroundColor: Colors.white,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
@@ -178,7 +178,11 @@ class _RegexAnalyzerScreenState extends State<RegexAnalyzerScreen> {
                     Text(
                       'Configuración',
                       style: Theme.of(context).textTheme.headlineSmall
-                          ?.copyWith(color: Colors.blue.shade800, fontSize: 24),
+                          ?.copyWith(
+                            color: Colors.black87,
+                            fontSize: 24,
+                            fontWeight: FontWeight.w700,
+                          ),
                     ),
                     const SizedBox(height: 16),
 
@@ -187,39 +191,94 @@ class _RegexAnalyzerScreenState extends State<RegexAnalyzerScreen> {
                       controller: _regexController,
                       style: Theme.of(context).textTheme.bodyMedium,
                       decoration: InputDecoration(
-                        labelText: "Expresión Regular",
-                        labelStyle: Theme.of(context).textTheme.bodyMedium
-                            ?.copyWith(color: Colors.grey.shade600),
-                        border: const OutlineInputBorder(),
-                        prefixIcon: const Icon(Icons.search),
-                        hintText: "Ejemplo: \\d+|[a-zA-Z]+",
-                        hintStyle: Theme.of(context).textTheme.bodySmall
-                            ?.copyWith(color: Colors.grey.shade400),
+                        hintText:
+                            "Ingresa tu expresión regular (ej: \\d+|[a-zA-Z]+)",
+                        hintStyle: Theme.of(context).textTheme.bodyMedium
+                            ?.copyWith(color: Colors.grey.shade500),
+                        filled: true,
+                        fillColor: const Color(
+                          0xFFF5FCF9,
+                        ), // Gris verdoso claro como en la imagen
+                        contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 24.0,
+                          vertical: 16.0,
+                        ),
+                        border: const OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                          borderRadius: BorderRadius.all(Radius.circular(50)),
+                        ),
+                        enabledBorder: const OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                          borderRadius: BorderRadius.all(Radius.circular(50)),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: const Color(
+                              0xFF00BF6D,
+                            ), // Verde para el borde activo
+                            width: 2,
+                          ),
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(50),
+                          ),
+                        ),
+                        prefixIcon: Icon(
+                          Icons.search,
+                          color: Colors.grey.shade500,
+                        ),
                       ),
                     ),
                     const SizedBox(height: 16),
 
                     // Entrada texto
-                    SizedBox(
+                    Container(
                       height: 200,
+                      decoration: BoxDecoration(
+                        color: const Color(
+                          0xFFF5FCF9,
+                        ), // Gris verdoso claro como en la imagen
+                        borderRadius: BorderRadius.circular(24),
+                      ),
                       child: TextField(
                         controller: _textoController,
                         maxLines: null,
                         expands: true,
                         style: Theme.of(context).textTheme.bodyMedium,
                         decoration: InputDecoration(
-                          labelText: "Texto para analizar (mínimo 5 líneas)",
-                          labelStyle: Theme.of(context).textTheme.bodyMedium
-                              ?.copyWith(color: Colors.grey.shade600),
-                          border: const OutlineInputBorder(),
-                          alignLabelWithHint: true,
-                          prefixIcon: const Icon(Icons.text_fields),
                           hintText:
-                              "Ingresa el texto que deseas analizar...\n"
+                              "Ingresa el texto que deseas analizar...\n\n"
                               "IMPORTANTE: Debe tener al menos 5 líneas\n"
                               "Presiona Enter para crear nuevas líneas",
-                          hintStyle: Theme.of(context).textTheme.bodySmall
-                              ?.copyWith(color: Colors.grey.shade400),
+                          hintStyle: Theme.of(context).textTheme.bodyMedium
+                              ?.copyWith(
+                                color: Colors.grey.shade500,
+                                height: 1.5,
+                              ),
+                          filled: true,
+                          fillColor: Colors.transparent,
+                          contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 24.0,
+                            vertical: 20.0,
+                          ),
+                          border: const OutlineInputBorder(
+                            borderSide: BorderSide.none,
+                            borderRadius: BorderRadius.all(Radius.circular(24)),
+                          ),
+                          enabledBorder: const OutlineInputBorder(
+                            borderSide: BorderSide.none,
+                            borderRadius: BorderRadius.all(Radius.circular(24)),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: const Color(
+                                0xFF00BF6D,
+                              ), // Verde para el borde activo
+                              width: 2,
+                            ),
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(24),
+                            ),
+                          ),
                         ),
                       ),
                     ),
@@ -260,18 +319,25 @@ class _RegexAnalyzerScreenState extends State<RegexAnalyzerScreen> {
                       child: ElevatedButton.icon(
                         onPressed: _procesar,
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blue,
+                          elevation: 0,
+                          backgroundColor: const Color(
+                            0xFF00BF6D,
+                          ), // Verde como en la imagen
                           foregroundColor: Colors.white,
-                          padding: const EdgeInsets.symmetric(vertical: 16),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
+                          padding: const EdgeInsets.symmetric(vertical: 18),
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(50)),
                           ),
                         ),
-                        icon: const Icon(Icons.play_arrow),
+                        icon: const Icon(Icons.play_arrow, size: 20),
                         label: Text(
                           "Procesar Regex",
                           style: Theme.of(context).textTheme.titleMedium
-                              ?.copyWith(color: Colors.white, fontSize: 16),
+                              ?.copyWith(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                              ),
                         ),
                       ),
                     ),
@@ -304,8 +370,11 @@ class _RegexAnalyzerScreenState extends State<RegexAnalyzerScreen> {
                                 ?.copyWith(
                                   color: _error != null
                                       ? Colors.red.shade800
-                                      : Colors.green.shade800,
+                                      : const Color(
+                                          0xFF00BF6D,
+                                        ), // Verde para resultados exitosos
                                   fontSize: 22,
+                                  fontWeight: FontWeight.w700,
                                 ),
                           ),
                         ],
@@ -503,18 +572,25 @@ class _RegexAnalyzerScreenState extends State<RegexAnalyzerScreen> {
                   Navigator.of(context).pop();
                 },
                 style: OutlinedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(vertical: 16),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
+                  elevation: 0,
+                  padding: const EdgeInsets.symmetric(vertical: 18),
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(50)),
                   ),
-                  side: BorderSide(color: Colors.blue.shade300),
+                  side: BorderSide(color: Colors.grey.shade400, width: 1.5),
                 ),
-                icon: const Icon(Icons.arrow_back),
+                icon: Icon(
+                  Icons.arrow_back,
+                  color: Colors.grey.shade600,
+                  size: 20,
+                ),
                 label: Text(
                   "Regresar al Inicio",
-                  style: Theme.of(
-                    context,
-                  ).textTheme.titleMedium?.copyWith(fontSize: 16),
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    fontSize: 16,
+                    color: Colors.grey.shade600,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ),
             ),
